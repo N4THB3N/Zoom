@@ -20,6 +20,8 @@ app.get('/', (req, res) => {
 
     if (req.query.code) {
 
+       //Social work 
+
 
         let url = 'https://zoom.us/oauth/token?grant_type=authorization_code&code=' + req.query.code + '&redirect_uri=' + process.env.redirectURL;
 
