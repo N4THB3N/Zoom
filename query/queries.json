@@ -1,0 +1,4 @@
+{
+    "getAllData": "SELECT * FROM Editorials",
+    "addNewUser": "INSERT INTO Sys_Log (Station_ID, Sys_User_ID, Log_Dt, Log_Cd, Field_1) VALUES(1, 64, GETUTCDATE(), 'Nueva reunión reportada', @Field_1)"
+}
