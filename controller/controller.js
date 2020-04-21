@@ -4,6 +4,7 @@ var rawdata = fs.readFileSync('./query/queries.json');
 var queries = JSON.parse(rawdata);
 
 // req.body.Field_1
+// req.query.Field_1
 
 class MainController{
     async getAllData(req , res){

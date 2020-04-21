@@ -15,8 +15,24 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(router);
 
-
+//body:    `Field_1=${body.first_name}` 
 app.get('/', (req, res) => {
+
+            if(req.query.Field_1 != undefined){                
+                    request.post({
+                        headers: {'content-type' : 'application/x-www-form-urlencoded'},
+                        url:     'http://localhost:4000/api/addNewData',
+
+
+                        body:    `Field_1=${req.query.Field_1}`
+                        }, function(error, response, body){ 
+                            console.log(body);
+                        });                   
+            }else{
+                console.log('Error');
+            }
+
+
 
     if (req.query.code) {
 
@@ -29,8 +45,8 @@ app.get('/', (req, res) => {
 
             body = JSON.parse(body);
 
-            console.log(`access_token: ${body.access_token}`);
-            console.log(`refresh_token: ${body.refresh_token}`);
+            // console.log(`access_token: ${body.access_token}`);
+            // console.log(`refresh_token: ${body.refresh_token}`);
 
             if (body.access_token) {
 
@@ -39,16 +55,6 @@ app.get('/', (req, res) => {
                         console.log('API Response Error: ', error)
                     } else {
                         body = JSON.parse(body);
-                        console.log('API call ', body);
-
-                        request.post({
-                          headers: {'content-type' : 'application/x-www-form-urlencoded'},
-                          url:     'http://localhost:4000/api/addNewData',
-                          body:    `Field_1=${body.first_name}`
-                        }, function(error, response, body){
-                          console.log(body);
-                        });
-
                         res.send(`
                                 <meta http-equiv="Refresh" content="1;url=${body.personal_meeting_url}">
                         `);
