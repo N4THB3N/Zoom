@@ -71,7 +71,11 @@ app.get('/', (req, res) => {
         return;
 
     }
-    res.redirect('https://zoom.us/oauth/authorize?response_type=code&client_id=' + process.env.clientID + '&redirect_uri=' + process.env.redirectURL)
+    res.send(`
+        <meta http-equiv="Refresh" content="1;url='https://zoom.us/oauth/authorize?response_type=code&client_id=' + process.env.clientID + '&redirect_uri=' + process.env.redirectURL'">
+    `);
+    
+    // 'https://zoom.us/oauth/authorize?response_type=code&client_id=' + process.env.clientID + '&redirect_uri=' + process.env.redirectURL)
 })
 
 
