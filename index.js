@@ -6,14 +6,14 @@ var port = process.env.PORT || 4000
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const router = require('./routes/route');
-const http = require('http');
-const url = require('url');
+const router2 = require('./zoomverify/zoom');
 
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(router);
+app.use(router2);
 
 //body:    `Field_1=${body.first_name}` 
 app.get('/', (req, res) => {
